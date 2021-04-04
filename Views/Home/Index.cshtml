@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model BowlingTeamListViewModel
+
+<body>
+    <div class="container-fluid">
+        <h1>@ViewData["Category"]</h1>
+        <h2>Bowler list</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Middle Initial</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Zip</th>
+                    <th scope="col">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var person in Model.bowlers)
+                {
+                    <tr>
+                        <td>@person.BowlerFirstName</td>
+                        <td>@person.BowlerMiddleInit</td>
+                        <td>@person.BowlerLastName</td>
+                        <td>@person.BowlerAddress</td>
+                        <td>@person.BowlerCity</td>
+                        <td>@person.BowlerState</td>
+                        <td>@person.BowlerZip</td>
+                        <td>@person.BowlerPhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+             page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary"
+             page-url-category="@Model.TeamName"
+             class="btn-group pull-right m-1"></div>
+    </div>
+</body>
